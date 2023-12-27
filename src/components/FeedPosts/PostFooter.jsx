@@ -2,7 +2,7 @@ import { Box, Button, Flex, Input, InputGroup, InputRightElement, Text } from "@
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from "../../assests/constants";
 import { useState } from "react";
 
-const PostFooter = () => {
+const PostFooter = ({username}) => {
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(1000);
 
@@ -16,7 +16,7 @@ const PostFooter = () => {
     }
   };
   return (
-    <Box my={4}>
+    <Box mb={10}>
       <Flex alignItems={"center"} gap={4} w={"full"} pt={0} mb={2} mt={2}>
         <Box onClick={handleLike} cursor={"pointer"} fontSize={18}>
           {!liked ? <NotificationsLogo /> : <UnlikeLogo />}
@@ -30,7 +30,7 @@ const PostFooter = () => {
         {likes} likes
       </Text>
       <Text fontSize="sm" fontWeight={700}>
-        asaprogrammer_{" "}
+        {username}{" "}
         <Text as='span' fontWeight={400}>
           Feeling good
         </Text>
