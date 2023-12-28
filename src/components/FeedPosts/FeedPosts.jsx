@@ -1,10 +1,19 @@
-import { Container, Flex, Skeleton, SkeletonCircle, VStack } from "@chakra-ui/react";
+import { Container, Flex, Box, Skeleton, SkeletonCircle, VStack } from "@chakra-ui/react";
 import FeedPost from "./FeedPost";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const FeedPosts = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(()=>{
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
   return (
     <Container maxW={"container.sm"} py={10} px={2}>
-      {!true && 
+      {isLoading && 
         [0, 1, 2, 3].map((_,idx) => (
           <VStack key={idx} gap={4} alignItems={"flex-start"} mb={10}>
             <Flex gap='2'>
@@ -20,6 +29,8 @@ const FeedPosts = () => {
           </VStack>
   ))}
 
+    {!isLoading && (
+      <>
       <FeedPost img="/img1.png" username="burakorkmezz" avatar="/img1.png">
         FeedPost
       </FeedPost>
@@ -32,6 +43,8 @@ const FeedPosts = () => {
       <FeedPost img="/img4.png" username="johndoe" avatar="/img4.png">
         FeedPost
       </FeedPost>
+      </>
+    )}
     </Container>
   );
 };
