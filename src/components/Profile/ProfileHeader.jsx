@@ -1,4 +1,4 @@
-import { Avatar, AvatarGroup, Flex, Text, VStack } from '@chakra-ui/react'
+import { Avatar, AvatarGroup, Button, Flex, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 
 const ProfileHeader = () => {
@@ -17,7 +17,32 @@ const ProfileHeader = () => {
           w={"full"}
         >
           <Text fontSize={{base: "sm", md: "lg"}}>asaprogammer_</Text>
+          
+          <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
+            <Button bg={"white"} color={"black"} _hover={{bg:"whiteApha.800"}} size={{base:"xs", md:"sm"}}>
+              Edit Profile
+            </Button>
+          </Flex>
         </Flex>
+        <Flex alignItems={"center"} gap={{base:2, sm: 4}}>
+          <Text fontSize={{base:"xs", md:"sm"}}>
+            <Text as={"span"} fontWeight={"bold"} mr={1}>4</Text>
+            Posts
+          </Text>
+          <Text fontSize={{base:"xs", md:"sm"}}>
+            <Text as={"span"} fontWeight={"bold"} mr={1}>149</Text>
+            Followers
+          </Text>
+          <Text fontSize={{base:"xs", md:"sm"}}>
+            <Text as={"span"} fontWeight={"bold"} mr={1}>175</Text>
+            Following
+          </Text>
+        </Flex>
+
+        <Flex alignItems={"center"} gap={4}>
+          <Text fontSize={"sm"} fontWeight={"bold"}>As a Programmer</Text>
+        </Flex>
+          <Text fontSize={"sm"}>Tutorials that are meant to level up your skills as a programmer.</Text>
       </VStack>
     </Flex>
   )
