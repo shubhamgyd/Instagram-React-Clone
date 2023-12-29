@@ -1,8 +1,9 @@
+import { Grid } from '@chakra-ui/react'
 import React from 'react'
 
 const ProfilePost = () => {
   return (
-    <div>ProfilePost</div>
+    <>Profile Post</>
   )
 }
 
