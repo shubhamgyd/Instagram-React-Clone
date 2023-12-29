@@ -1,6 +1,7 @@
-import { Grid, GridItem, Image, Text } from '@chakra-ui/react'
+import { Grid, GridItem, Image, Text, Flex } from '@chakra-ui/react'
 import React from 'react'
 import { AiFillHeart } from 'react-icons/ai'
+import { FaComment } from "react-icons/fa"
 
 const ProfilePost = ({img}) => {
   return (
@@ -32,9 +33,12 @@ const ProfilePost = ({img}) => {
               7
             </Text>
           </Flex>
-          <Flex></Flex>
+          <Flex>
+            <FaComment />
+            <Text fontWeight={"bold"} ml={2}>7</Text>
+          </Flex>
         </Flex>
-      <Image src={img}></Image>
+        
       </Flex>
     </GridItem>
   )
