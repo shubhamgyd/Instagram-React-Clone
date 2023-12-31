@@ -2,10 +2,11 @@ import React from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth, fireStore } from "../firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
+import useShowToast from "./useShowToast";
 
 const useSignUpWithEmailAndPassword = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, loading, error] = useCreateUserWithEmailAndPassword(auth);
+  const showToast = useShowToast();
 
   const signup = async (inputs) => {
     if (
@@ -14,8 +15,8 @@ const useSignUpWithEmailAndPassword = () => {
       !inputs.username ||
       !inputs.fullName
     ) {
-      console.log("Please fill all the fields");
-      console.log(inputs);
+      showToast("Error", "Please fill all the fields", "error");
+      // console.log("filled error")
       return;
     }
 
@@ -25,7 +26,8 @@ const useSignUpWithEmailAndPassword = () => {
         inputs.password
       );
       if (!newUser && error) {
-        console.log(error);
+        showToast("success",error.message,"error");
+        // console.log("error user")
         return;
       }
       if (newUser) {
@@ -45,7 +47,8 @@ const useSignUpWithEmailAndPassword = () => {
         localStorage.setItem("user-info", JSON.stringify(userDoc));
       }
     } catch (error) {
-      console.log(error);
+      showToast("Error", error.message, "error")
+      // console.log("time error")
     }
   };
 
