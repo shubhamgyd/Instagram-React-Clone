@@ -8,7 +8,7 @@ const useShowToast = () => {
       title: title,
       description: description,
       status: status,
-      duration: 10000,
+      duration: 9000,
       isClosable: true,
     });
   };
