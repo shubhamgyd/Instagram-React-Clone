@@ -16,7 +16,6 @@ const useSignUpWithEmailAndPassword = () => {
       !inputs.fullName
     ) {
       showToast("Error", "Please fill all the fields", "error");
-      // console.log("filled error")
       return;
     }
 
@@ -26,8 +25,7 @@ const useSignUpWithEmailAndPassword = () => {
         inputs.password
       );
       if (!newUser && error) {
-        showToast("success",error.message,"error");
-        // console.log("error user")
+        showToast("Error",error.message,"error");
         return;
       }
       if (newUser) {
@@ -48,7 +46,6 @@ const useSignUpWithEmailAndPassword = () => {
       }
     } catch (error) {
       showToast("Error", error.message, "error")
-      // console.log("time error")
     }
   };
 
