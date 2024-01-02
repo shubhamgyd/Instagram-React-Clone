@@ -38,7 +38,7 @@ const AuthForm = () => {
             <Box flex={2} h={"1px"} bg={"gray.400"} />
           </Flex>
 
-          <GoolgeAuth />
+          <GoolgeAuth prefix={isLogin?"Log in":"Signup"}/>
         </VStack>
       </Box>
 
