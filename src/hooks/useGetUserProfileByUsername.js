@@ -37,6 +37,7 @@ const useGetUserProfileByUsername = (username) => {
     };
     getUserProfile();
   }, [setUserProfile, username, showToast]);
+  
   return { isLoading, userProfile};
 };
 
