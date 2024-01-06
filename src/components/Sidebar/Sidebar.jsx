@@ -14,30 +14,6 @@ import useLogout from "../../hooks/useLogout";
 import SidebarItems from "./SidebarItems";
 
 const Sidebar = () => {
-  const sidebarItems = [
-    {
-      icon: <AiFillHome size={25} />,
-      text: "Home",
-      link: "/",
-    },
-    {
-      icon: <SearchLogo />,
-      text: "Search",
-    },
-    {
-      icon: <NotificationsLogo />,
-      text: "Notifications",
-    },
-    {
-      icon: <CreatePostLogo />,
-      text: "Create",
-    },
-    {
-      icon: <Avatar size={"sm"} name="Burak Orkmez" src="/profilepic.png" />,
-      text: "Profile",
-      link: "/profile",
-    },
-  ];
 
   const { handleLogout, isLoggingOut } = useLogout();
 
