@@ -7,7 +7,7 @@ const usePostStore = create((set) => ({
       posts: [post, ...state.posts],
     })),
 
-  // deletePost
+  deletePost: (id) => set(state => ({posts: state.posts.filter(post => post.id !== id)})),
   // addComment
   setPosts: (posts) => set({ posts }),
 }));
