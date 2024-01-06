@@ -1,21 +1,22 @@
 import { Avatar, Flex, Text } from '@chakra-ui/react'
 import React from 'react'
 
-const Comment = ({createdAt,username, profilePic, text}) => {
+const Comment = ({comment}) => {
+  // const {userProfile, isLoading} = useGetUserProfileById(comment.createdBy)
   return (
     <Flex gap={4}> 
-      <Avatar src={profilePic} name={username} size={"sm"} />
+      {/* <Avatar src={userProfile.profilePicURL} name={username} size={"sm"} /> */}
       <Flex direction={"column"}>
         <Flex gap={2}>
           <Text fontWeight={"bold"} fontSize={12}>
-            {username}
+            {/* {username} */}
           </Text>
-          <Text fontSize={14} color={"gray.500"}>
-            {text}
+          <Text fontSize={14} color={"gray.200"}>
+            {comment.comment}
           </Text>
         </Flex>
         <Text fontSize={12} color={"gray"}>
-          {createdAt}
+          {/* {createdAt} */}
         </Text>
       </Flex>
     </Flex>

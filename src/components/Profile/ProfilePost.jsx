@@ -36,9 +36,12 @@ const ProfilePost = ({ post }) => {
   const showToast = useShowToast();
   const [isDeleting, setIsDeleting] = useState(false);
   const deletePost = usePostStore(state => state.deletePost);
+  const decrementPostCount = useUserProfileStore((state) => state.deletePost);
 
   const handleDeletePost = async () => {
     if(!window.confirm("Are you sure you want to delete this post?")) return;
+    if(isDeleting) return;
+
     try {
       const imageRef = ref(storage, `posts/${post.id}`);
       await deleteObject(imageRef)
@@ -50,6 +53,7 @@ const ProfilePost = ({ post }) => {
       })
 
       deletePost(post.id);
+      decrementPostCount(post.id);
       showToast("Success", "Post deleted successfully", "success");
 
     } catch (error) {
@@ -155,7 +159,7 @@ const ProfilePost = ({ post }) => {
                     </Text>
                   </Flex>
 
-                  {authUser.uid === userProfile.uid && (
+                  {authUser?.uid === userProfile.uid && (
                     <Button
                       size={"sm"}
                       bg={"transparent"}
@@ -163,6 +167,7 @@ const ProfilePost = ({ post }) => {
                       borderRadius={4}
                       p={1}
                       onClick={handleDeletePost}
+                      isLoading={isDeleting}
                     >
                       <MdDelete size={20} cursor={"pointer"} />
                     </Button>
@@ -176,22 +181,13 @@ const ProfilePost = ({ post }) => {
                   maxH={"350px"}
                   overflowY={"auto"}
                 >
-                  <Comment
-                    createdAt={"3h ago"}
-                    username={"kentdodds"}
-                    profilePic={"https://bit.ly/kent-c-dodds"}
-                    text={"Good clone dude!"}
-                  />
-                  <Comment
-                    createdAt={"3h ago"}
-                    username={"kentdodds"}
-                    profilePic={"https://bit.ly/kent-c-dodds"}
-                    text={"Good clone dude!"}
-                  />
+                  {post.comments.map(comment => (
+                    <Comment key={comment.id} comment={comment} />
+                  ))}
                 </VStack>
                 <Divider my={4} bg={"gray.800"} />
 
-                <PostFooter isProfilePage={true} />
+                <PostFooter isProfilePage={true} post={post}/>
               </Flex>
             </Flex>
           </ModalBody>
