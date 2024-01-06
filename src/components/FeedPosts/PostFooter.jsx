@@ -11,7 +11,7 @@ import {
   CommentLogo,
   NotificationsLogo,
   UnlikeLogo,
-} from "../../assests/constants";
+} from "../../assets/constants";
 import { useState } from "react";
 
 const PostFooter = ({ username, isProfilePage }) => {
