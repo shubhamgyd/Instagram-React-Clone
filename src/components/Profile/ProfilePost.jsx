@@ -14,6 +14,7 @@ import {
   Avatar,
   Divider,
   VStack,
+  Button
 } from "@chakra-ui/react";
 import React from "react";
 import { AiFillHeart } from "react-icons/ai";
